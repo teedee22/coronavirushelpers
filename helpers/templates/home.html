@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block form_block %}
+<h4><strong>I can help my neighbours by delivering food if they are sick</strong></h4>
+
+    <form method="POST" action="/add_helper">
+        <p>Please provide your postcode (Currently UK only)</p>
+        <input name="postcode" id="postcode" placeholder="Postcode" autofocus/></br>
+        <p>Please provide a link to somewhere you have posted your information.</p>
+        <input name="link" id="link" placeholder="link" autofocus/>
+        </br>
+        <a href="/add_helper"><button type="button" class="btn btn-primary">Submit</button></a>
+        </br>
+        <p><i>The information is so scant for now for GDPR reasons. Expert in this? get involved and help me improve this.</i></p>
+        {% csrf_token %}
+    </form>
+
+{% endblock %}

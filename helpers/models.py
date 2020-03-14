@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
+class Helper(models.Model):
+    postcode = models.TextField(null=False)
+    link = models.TextField(null=False)
