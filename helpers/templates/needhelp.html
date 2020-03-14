@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block form_block %}
+<h4><strong>Search for helpers near you</strong></h4>
+
+    <form method="POST" action="/add_helper">
+
+<div class="form-group">
+    <label for="exampleinputPostcode">Postcode</label>
+    <input type="text" class="form-control" id="postcode" name="postcode" aria-describedby="Enter your postcode" placeholder="Enter UK Postcode">
+</div>
+
+<button type="submit" class="btn btn-primary">Search</button>
+
+        {% csrf_token %}
+    </form>
+
+{% endblock %}

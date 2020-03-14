@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Helper
+from ukpostcodeutils import validation
 
 
 def home_page(request):
@@ -7,7 +8,21 @@ def home_page(request):
 
 
 def add_helper(request):
-    Helper.objects.create(
-        postcode=request.POST["postcode"], link=request.POST("link")
-    )
-    return redirect("thankyou.html")
+    postcode = request.POST["postcodeFirst"] + request.POST["postcodeSecond"]
+    if validation.is_valid_postcode(postcode):
+        Helper.objects.create(
+            postcodeFirst=request.POST["postcodeFirst"],
+            postcodeSecond=request.POST["postcodeSecond"],
+            link=request.POST["link"],
+        )
+        return render(request, "thankyou.html")
+    else:
+        return render(request, "error.html", {"postcode": postcode})
+
+
+def need_help(request):
+    return render(request, "needhelp.html")
+
+
+def postcode_search(request):
+    pass

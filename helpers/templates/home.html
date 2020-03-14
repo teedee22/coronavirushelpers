@@ -1,16 +1,31 @@
 {% extends 'base.html' %}
 {% block form_block %}
-<h4><strong>I can help my neighbours by delivering food if they are sick</strong></h4>
+<h4><strong>I can help my neighbours by delivering supplies if they are sick</strong></h4>
 
     <form method="POST" action="/add_helper">
-        <p>Please provide your postcode (Currently UK only)</p>
-        <input name="postcode" id="postcode" placeholder="Postcode" autofocus/></br>
-        <p>Please provide a link to somewhere you have posted your information.</p>
-        <input name="link" id="link" placeholder="link" autofocus/>
-        </br>
-        <a href="/add_helper"><button type="button" class="btn btn-primary">Submit</button></a>
-        </br>
-        <p><i>The information is so scant for now for GDPR reasons. Expert in this? get involved and help me improve this.</i></p>
+<label for="exampleinputPostcode">Postcode</label>
+<div class="form-row">
+    <div class="col">
+        <input type="text" class="form-control" maxlength=4 id="postcodeFirst" name="postcodeFirst" aria-describedby="Enter first half of your UK postcode" placeholder="First Part postcode">
+    </div>
+    <div class="col">
+        <input type="text" class="form-control" maxlength=3 id="postcodeSecond" name="postcodeSecond" aria-describedby="Enter second half of your UK postcode" placeholder="Second part postcode">
+    </div>
+    <small id="postcodehelp" class="form-text text-muted">UK postcodes only</small>
+</div>
+<div class="form-group">
+    <label for="exampleInputLink">Link</label>
+    <input type="text" class="form-control" id="link" name="link" aria-describedby="add an internet link where you have posted information." placeholder="Enter a link">
+    <small id="postcodehelp" class="form-text text-muted">add an internet link where you have posted information. This could be social media, forum posts, nextdoor or anywhere else</small>
+</div>
+<!--
+<div class="form-check">
+<input type="checkbox" class="form-check-input" id="exampleCheck1">
+<label class="form-check-label" for="exampleCheck1">I am happy for this information to be listed on this website until 31st December 2020 or when I request it to be deleted.</label>
+</div>-->
+<button type="submit" class="btn btn-primary">Submit</button>
+
+        <p><i>*The information is so scant for now for GDPR reasons. </br>Expert in this? <a href="">get involved and help me improve this.</a></i></p>
         {% csrf_token %}
     </form>
 

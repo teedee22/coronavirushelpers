@@ -16,11 +16,14 @@ Including another URLconf
 
 from django.conf.urls import url
 from django.contrib import admin
+from django.urls import include, path
 
-from helpers.views import home_page, add_helper
+from helpers.views import home_page, add_helper, need_help
 
 urlpatterns = [
-    url(r"^admin/", admin.site.urls),
-    url(r"", home_page, name="home_page"),
-    url("add_helper/", add_helper, name="add_helper"),
+    # url(r'^$', 'home', name='home'),
+    # url(r"^admin/", admin.site.urls),
+    path("", home_page, name="home_page"),
+    path("add_helper", add_helper, name="add_helper"),
+    path("needhelp", need_help, name="need_help"),
 ]
